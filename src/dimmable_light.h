@@ -43,7 +43,7 @@ public:
    * Set the brightness, 0 to turn off the lamp
    */
   void setBrightness(uint8_t bri) {
-    brightness = bri;
+         if (bri > 0) brightness=bri; //that way, when light is turn off (bri=0), last brightness remain intact so that upon turn on it returns to previous level
 #ifdef NETWORK_FREQ_FIXED_50HZ
     uint16_t newDelay = 10000 - (uint16_t)(((uint32_t)bri * 10000) / 255);
 #elif defined(NETWORK_FREQ_FIXED_60HZ)
